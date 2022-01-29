@@ -8,6 +8,11 @@
   <br />
   {{ form.as_p}}
   <button type="submit">Save</button>
-  <a href="{% url 'todo_list' %}">Cancel</a>
+  <button>
+    <a href="{% url 'todo_delete' todo.id %}">Delete</a>
+  </button>
+  <button>
+    <a href="{% url 'todo_list' %}">Cancel</a>
+  </button>
 </form>
 {% endblock content %}
