@@ -1,1 +1,12 @@
-{% extends 'todo/base.html' %} {% block content %} {{todos}} {% endblock content %}
+{% extends 'todo/base.html' %} {% block content %}
+
+<h2>TODO List</h2>
+<hr />
+<ul>
+  {% for todo in todos %}
+  <li>{{todo.title}} {{todo.description}} {{todo.priority}} {{todo.isDone}} {{todo.updated_date}}</li>
+
+  {% endfor %}
+</ul>
+
+{% endblock content %}

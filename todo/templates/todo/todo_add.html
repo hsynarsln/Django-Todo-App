@@ -1,0 +1,12 @@
+{% extends 'todo/base.html' %} {% block content %}
+
+<h2>TODO Add</h2>
+<hr />
+<form action="" method="POST">
+  <!-- !csrf_token post işlemi yapılacağı zaman bu token kullanılır. -->
+  {% csrf_token %}
+  <br />
+  {{ form.as_p}}
+  <button type="submit">Save</button>
+</form>
+{% endblock content %}

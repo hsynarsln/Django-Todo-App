@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
+from .forms import TodoForm
 from .models import Todo
 
 # Create your views here.
@@ -12,14 +13,23 @@ def home(request):
 
 def todo_list(request):
     todos = Todo.objects.all()
-    contex = {
+    context = {
         'todos': todos
     }
-    return render(request, "todo/todo_list.html", contex)
+    return render(request, "todo/todo_list.html", context)
 
 
 def todo_add(request):
-    pass
+    form = TodoForm()
+    if request.method == "POST":
+        form = TodoForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            return redirect("todo_list")
+    context = {
+        'form': form
+    }
+    return render(request, "todo/todo_add.html", context)
 
 
 def todo_update(request, id):
