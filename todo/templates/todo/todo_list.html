@@ -4,7 +4,9 @@
 <hr />
 <ul>
   {% for todo in todos %}
-  <li>{{todo.title}} {{todo.description}} {{todo.priority}} {{todo.isDone}} {{todo.updated_date}}</li>
+  <a href="{% url 'todo_update' todo.id %}">
+    <li>{{todo.title}} {{todo.description}} {{todo.priority}} {{todo.isDone}} {{todo.updated_date}}</li>
+  </a>
 
   {% endfor %}
 </ul>

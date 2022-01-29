@@ -1,3 +1,5 @@
+from multiprocessing import context
+
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
@@ -33,8 +35,26 @@ def todo_add(request):
 
 
 def todo_update(request, id):
-    pass
+    todo = Todo.objects.get(id=id)
+    form = TodoForm(instance=todo)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo)
+        if(form.is_valid()):
+            form.save()
+            return redirect("todo_list")
+    context = {
+        "form": form,
+        "todo": todo
+    }
+    return render(request, "todo/todo_update.html", context)
 
 
 def todo_delete(request, id):
-    pass
+    todo = Todo.objects.get(id=id)
+    if request.method == "POST":
+        todo.delete()
+        return redirect("todo_list")
+    context = {
+        "todo": todo
+    }
+    return render(request, "todo/todo_delete.html", context)
