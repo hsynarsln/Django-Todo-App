@@ -9,12 +9,10 @@
 <br />
 <br />
 <center>
-  <button>
-    <a href="{% url 'todo_list' %}">Todo List</a>
-  </button>
-  <button>
-    <a href="{% url 'todo_add' %}">Todo Add</a>
-  </button>
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button class="btn btn-danger" type="button"><a href="{% url 'todo_list' %}" style="text-decoration: none; color: #fff">Todo List</a></button>
+    <button class="btn btn-info" type="button"><a href="{% url 'todo_add' %}" style="text-decoration: none; color: #fff">Todo Add</a></button>
+  </div>
 </center>
 
 {% endblock content %}

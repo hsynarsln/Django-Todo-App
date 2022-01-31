@@ -1,13 +1,16 @@
 {% extends 'todo/base.html' %} {% block content %}
-
-<h2>TODO Delete</h2>
+<center>
+  <h2>TODO Delete</h2>
+</center>
 <hr />
 <form action="" method="POST">
   <!-- !csrf_token post işlemi yapılacağı zaman bu token kullanılır. -->
   {% csrf_token %}
   <br />
   Are you sure you want to delete the {{ todo.title }} ?
-  <input type="submit" value="Yes" />
-  <a href="{% url 'todo_list' %}">Cancel</a>
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button type="submit" class="btn btn-success">Yes</button>
+    <a href="{% url 'todo_list' %}" style="text-decoration: none"><button type="button" class="btn btn-dark">Cancel</button></a>
+  </div>
 </form>
 {% endblock content %}

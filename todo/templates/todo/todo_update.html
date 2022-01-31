@@ -1,18 +1,33 @@
 {% extends 'todo/base.html' %} {% block content %}
-
-<h2>TODO Update</h2>
+<center>
+  <h2>TODO Update</h2>
+</center>
 <hr />
+
+{% comment %}
 <form action="" method="POST">
   <!-- !csrf_token post işlemi yapılacağı zaman bu token kullanılır. -->
   {% csrf_token %}
   <br />
   {{ form.as_p}}
-  <button type="submit">Save</button>
-  <button>
-    <a href="{% url 'todo_delete' todo.id %}">Delete</a>
-  </button>
-  <button>
-    <a href="{% url 'todo_list' %}">Cancel</a>
-  </button>
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button type="submit" class="btn btn-danger">Save</button>
+    <button type="button" class="btn btn-warning"><a href="{% url 'todo_delete' todo.id %}">Delete</a></button>
+    <button type="button" class="btn btn-success"><a href="{% url 'todo_list' %}">Cancel</a></button>
+  </div>
 </form>
+{% endcomment %}
+<div style="width: 300px; margin: auto">
+  {% load crispy_forms_tags %}
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %} {{ form | crispy}}
+    <center>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'todo_delete' todo.id %}" style="text-decoration: none"><button type="button" class="btn btn-danger">Delete</button></a>
+        <a href="{% url 'todo_list' %}" style="text-decoration: none"><button type="button" class="btn btn-dark">Cancel</button></a>
+      </div>
+    </center>
+  </form>
+</div>
 {% endblock content %}
