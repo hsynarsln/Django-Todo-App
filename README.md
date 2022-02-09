@@ -2,20 +2,20 @@
 
 <h1 align="center">TODO App</h1>
 
-<!--
+
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="http://hsynarslan.pythonanywhere.com/">
       Demo
     </a>
      | 
-    <a href="https://{your-url-to-the-solution}">
+    <a href="http://hsynarslan.pythonanywhere.com/">
       Project
     </a>
  
   </h3>
 </div>
--->
+
 
 <!-- TABLE OF CONTENTS -->
 
